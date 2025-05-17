@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sudhan & Greeshma's Wedding</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+    }
+    .overlay {
+      background-color: rgba(255, 192, 203, 0.85);
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.2em;
+    }
+    .details {
+      font-size: 1.5em;
+      margin: 1em 0;
+    }
+    #countdown {
+      font-size: 2em;
+      margin: 1em 0;
+    }
+    .scanner img {
+      width: 150px;
+      border: 5px dashed white;
+      border-radius: 15px;
+    }
+    .scanner p {
+      margin-top: 0.5em;
+      font-style: italic;
+      font-size: 1.2em;
+    }
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1>Sudhan ❤️ Greeshma</h1>
+    <div class="details">
+      <p>Are getting married on</p>
+      <p><strong>08 June 2025</strong> at <strong>11:30 AM</strong></p>
+      <p>Venue: Guruvayoor Temple</p>
+    </div>
+
+    <div id="countdown"></div>
+
+    <div class="scanner">
+      <img src="qr.png" alt="QR Scanner">
+      <p>Scan here to bless the couple with your love…<br>and maybe some money too 💸😉</p>
+    </div>
+
+    <audio autoplay loop>
+      <source src="music.mp3" type="audio/mp3">
+    </audio>
+  </div>
+
+  <script>
+    const targetDate = new Date("2025-06-08T11:30:00").getTime();
+    const countdown = document.getElementById("countdown");
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff < 0) {
+        countdown.innerHTML = "🎉 It's Wedding Time! 🎊";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s to go`;
+    }, 1000);
+  </script>
+</body>
+</html>
